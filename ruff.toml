@@ -1,0 +1,7 @@
+# The monorepo requires Python >=3.14, but this directory is published as a
+# standalone plugin that must run on whatever python3 its host repo has --
+# `.github/workflows/test.yml` pins that floor at 3.10. Without this, `ruff
+# format` rewrites kl.py into 3.14-only syntax (PEP 758 `except A, B:`) that
+# every supported interpreter below the monorepo's floor refuses to parse.
+extend = "../../pyproject.toml"
+target-version = "py310"
